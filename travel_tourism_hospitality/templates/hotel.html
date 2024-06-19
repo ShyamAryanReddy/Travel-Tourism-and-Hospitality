@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'bookings' %}">Bookings</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Hotels</li>
+  </ol>
+</nav>
+
+{% if user.is_authenticated %}
+<br>
+<h4 align="center">Hotel Bookings</h4>
+<br>
+{% else %}
+<br>
+<h4 align="center">Login to access hotel bookings : </h4>
+<p align="center"><a href="accounts/register" class="btn btn-outline-success">Join us</a></p>
+<br>
+{% endif %}
+
+{% if user.is_authenticated %}
+<!-- Hotel cards -->
+<div class="row">
+  {% for hotel in hotels %}
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{{hotel.pic.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{hotel.name}} ({{dest}})</h5>
+        <p class="card-text">Rating : {{hotel.rating}}/5</p>
+        <h6 class="card-title">Hotel Price : {{hotel.hprice}} /-</h6>
+        <a href="{% url 'addUserDestination' %}?data={{dest}} {{cprice}} {{hotel.name}} {{hotel.hprice}}" class="btn btn-primary">Book</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <!--div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/palace.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Hotel Palace ({{dest}})</h5>
+        <p class="card-text">Rating : 3.5/5</p>
+        <h6 class="card-title">Hotel Price : 5000 /-</h6>
+        <a href="{% url 'bookings' %}" class="btn btn-primary">Book</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/paradise.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Paradise ({{dest}})</h5>
+        <p class="card-text">Rating : 4/5</p>
+        <h6 class="card-title">Hotel Price : 8000 /-</h6>
+        <a href="{% url 'bookings' %}" class="btn btn-primary">Book</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/taj.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Hotel Taj ({{dest}})</h5>
+        <p class="card-text">Rating : 4.5/5</p>
+        <h6 class="card-title">Hotel Price : 10000 /-</h6>
+        <a href="{% url 'bookings' %}" class="btn btn-primary">Book</a>
+      </div>
+    </div>
+  </div-->
+</div>
+{% endif %}
+
+<br><br>
+
+{% endblock %}

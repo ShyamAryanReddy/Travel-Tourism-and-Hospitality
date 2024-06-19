@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Courses</li>
+  </ol>
+</nav>
+
+
+    {% if user.is_authenticated %}
+    <br>
+    <h4><p align="center">Our Courses</p></h4>
+    <br>
+    {% else %}
+    <br>
+    <h4><p align="center">Courses</p></h4>
+    <br>
+    {% endif %}
+
+<!-- different courses cards-->
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/ctravel.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Travel</h5>
+            <p class="card-text">Courses related to travel.</p>
+            <a href="courses/Travel" class="btn btn-primary">See courses</a>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/ctourism.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Tourism</h5>
+        <p class="card-text">Courses related to tourism.</p>
+        <a href="courses/Tourism" class="btn btn-primary">See courses</a>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/chospitality.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Hospitality</h5>
+        <p class="card-text">Courses related to Hospitality.</p>
+        <a href="courses/Hospitality" class="btn btn-primary">See courses</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br><br>
+
+{% endblock %}

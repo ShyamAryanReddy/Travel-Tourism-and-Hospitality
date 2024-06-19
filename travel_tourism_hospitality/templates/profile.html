@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+  </ol>
+</nav>
+
+{% for message in messages%}
+<h5 align="center">{{message}}</h5>
+{% endfor %}
+
+<br>
+
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h2 align="center" class="card-title">Profile</h2>
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span> </span></div>
+        <h4 align="center" class="card-title">{{user.username}}</h4>
+        <h5 align="center" class="card-subtitle mb-2 text-muted">{{user.email}}</h5>
+        <p align="center"><a href="accounts/changepass">change password</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h3 align="center">Your Bookings</h3><br>
+        {% for dest in userDestinations %}
+        <h6><li>Place: {{dest.city}} , Hotel: {{dest.hotel}} , Total Price: {{dest.price}}/- , Booking date: {{dest.date}}</li></h6>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br><br>
+{% endblock %}

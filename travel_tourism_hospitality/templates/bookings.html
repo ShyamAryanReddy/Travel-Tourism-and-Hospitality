@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Bookings</li>
+  </ol>
+</nav>
+
+{% if user.is_authenticated %}
+<br>
+<h4 align="center">Destination Bookings</h4>
+<br>
+{% else %}
+<br>
+<h4 align="center">Bookings</h4>
+<br>
+{% endif %}
+
+<!-- Location cards -->
+<div class="row">
+  {% for dest in dests %}
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{{dest.img.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{dest.name}}</h5>
+        <p class="card-text">{{dest.desc}}</p>
+        <h6 class="card-title">From {{dest.price}} /-</h6>
+        <a href="{% url 'hotels' %}?data={{dest.name}} {{dest.price}} " class="btn btn-primary">Go here</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+<br><br>
+
+{% endblock %}

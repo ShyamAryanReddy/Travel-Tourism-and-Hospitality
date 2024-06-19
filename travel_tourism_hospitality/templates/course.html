@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'courses' %}">Courses</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{coursetype}}</li>
+  </ol>
+</nav>
+
+{% if user.is_authenticated %}
+<br>
+<h4 align="center">{{coursetype}} Courses</h4>
+<br>
+{% else %}
+<br>
+<h4 align="center">Login to enjoy courses:</h4>
+<p align="center"><a href="accounts/register" class="btn btn-outline-success">Join us</a></p>
+<br>
+{% endif %}
+
+{% if user.is_authenticated %}
+<!-- Location cards -->
+<div class="row">
+  {% for course in courses %}
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{{course.img.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">{{course.coursename}}</h4>
+        <h5>You will learn :</h5>
+        <p class="card-text">{{course.desc}}</p>
+        <a href="{{course.link}}" class="btn btn-primary">Watch video</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<br><br>
+
+{% endblock %}

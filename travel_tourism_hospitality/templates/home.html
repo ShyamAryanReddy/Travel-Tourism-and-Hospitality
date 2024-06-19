@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
+
+
+{% if user.is_authenticated %}
+<h5><p align="center" style="background-color:LightCyan;">Welcome <u>{{user.username}}</u></p></h5>
+{% endif %}
+
+
+
+<!-- Carousel -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/carousel1.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Travel</h3>
+        <h5><p>"The journey of a thousand miles begins with a single step."</p></h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carousel2.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Tourism</h3>
+        <h5><p>"The real voyage of discovery consists not in seeking new landscapes, but in having new eyes."</p></h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/carousel3.jpg' %}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h3>Hospitality</h3>
+        <h5><p>"Hospitality is not to change people, but to offer them space where change can take place."</p></h5>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br><br>
+
+
+<br><br>
+
+
+<!-- About us -->
+  <!--div class="card-body"-->
+    <h3 align="center">About Us :</h3>
+    <h5 align="center"><p class="card-text">Our Company is committed to bringing travelers the best in value and quality travel arrangements. We are passionate about travel and providing corporate travelers high-touch services to facilitate their business travel needs and sharing the world’s wonders on the leisure travel side.</p></h5>
+    {% if user.is_authenticated %}
+    <h4 align="center"> Happy Exploring </h4>
+    {% else %}
+    <p align="center"><a href="accounts/register" class="btn btn-outline-success">Join us</a></p>
+    {% endif %}
+  <!--/div-->
+<br><br>
+
+
+<h3 align="center">Our Team :</h3>
+<!-- Team members -->
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/aryan.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Shyam Aryan</h5>
+        <p class="card-text">I took care of front end.</p>
+        <!--a href="#" class="btn btn-primary">Go somewhere</a-->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/shannu.jpeg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Shanmukha</h5>
+        <p class="card-text">I took care of connectivity.</p>
+        <!--a href="#" class="btn btn-primary">Go somewhere</a-->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+      <img src="{% static 'images/shoaib.jpg' %}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Shoaib</h5>
+        <p class="card-text">I took care of back end.</p>
+        <!--a href="#" class="btn btn-primary">Go somewhere</a-->
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
+{% endblock %}
